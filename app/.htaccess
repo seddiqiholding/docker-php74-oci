@@ -1,0 +1,62 @@
+# PHP configuration
+php_value memory_limit 300M
+php_value upload_max_filesize 200M
+php_value post_max_size 200M
+php_value max_execution_time 80000
+php_value max_input_time 80000
+
+# CORS header
+Header set Access-Control-Allow-Origin "*"
+
+## Enable URL rewriting
+#<IfModule mod_rewrite.c>
+#    RewriteEngine On
+#
+#    # Base directory for your project
+#    RewriteBase /RetailPOS_APIGateway/
+#
+#    # Rewrite dynamic versioned routes (v1, v2, v28, etc.)
+#    # RewriteRule ^(v[0-9]+/.+)$ $1.php [L]
+#
+#    # Ignore existing files and directories
+#    RewriteCond %{REQUEST_FILENAME} !-f
+#    RewriteCond %{REQUEST_FILENAME} !-d
+#
+#    # Redirect all other requests to index.php
+#    RewriteRule ^(.*)$ index.php [QSA,L]
+#</IfModule>
+
+#Explanation of Changes:
+# RewriteBase /RetailPOS_APIGateway/:
+#
+#Limits the rewrite rules to the RetailPOS_APIGateway directory.
+#RewriteCond %{REQUEST_FILENAME} !-f:
+#
+#Ensures the server serves existing files directly (e.g., style.css or script.js).
+#RewriteCond %{REQUEST_FILENAME} !-d:
+#
+#Ensures the server serves existing directories directly.
+#RewriteRule ^(.*)$ index.php [QSA,L]:
+#
+#Routes all other requests to index.php.
+#QSA appends query strings.
+#L ensures no further rules are processed.
+#How It Works:
+#Requests like http://172.150.2.73/RetailPOS_APIGateway/v1/employee will be routed to index.php.
+#Requests to static files (e.g., http://172.150.2.73/RetailPOS_APIGateway/assets/logo.png) will bypass index.php.
+
+
+
+#Testing
+#Place the .htaccess file in the RetailPOS_APIGateway directory.
+#Ensure that mod_rewrite is enabled in your Apache server:
+#bash
+#Copy code
+#a2enmod rewrite
+#systemctl restart apache2
+#Test:
+#Dynamic Endpoint:
+#http://172.150.2.73/RetailPOS_APIGateway/v1/employee should display your routed response.
+#Static File:
+#http://172.150.2.73/RetailPOS_APIGateway/assets/style.css should serve the file directly.
+#This configuration ensures that routing only affects the RetailPOS_APIGateway project, leaving other projects unaffected.

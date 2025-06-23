@@ -1,0 +1,287 @@
+# ========================
+# PHP & Composer
+# ========================
+composer.phar
+composer.lock
+/vendor/
+/vendor
+/vendor_copy
+/web_services/vendor
+/POSRetail-APIGateway/vendor
+#.htaccess
+auth.json
+
+# ========================
+# Environment Configuration
+# ========================
+/config/app.php
+/app/Config/core.php
+/app/Config/database.php
+
+# ========================
+# Cache and Logs (CakePHP 2 & 3)
+/tmp/cache/models/*
+!/tmp/cache/models/empty
+/tmp/cache/persistent/*
+!/tmp/cache/persistent/empty
+/tmp/cache/views/*
+!/tmp/cache/views/empty
+/tmp/sessions/*
+!/tmp/sessions/empty
+/tmp/tests/*
+!/tmp/tests/empty
+/logs/*
+!/logs/empty
+
+# ========================
+# MacOS Files
+# ========================
+*.DS_Store
+._*
+.DS_Store
+*~.DS_Store
+.AppleDouble
+.LSOverride
+Icon
+.DocumentRevisions-V100
+.fseventsd
+.Spotlight-V100
+.TemporaryItems
+.Trashes
+.VolumeIcon.icns
+.com.apple.timemachine.donotpresent
+.AppleDB
+.AppleDesktop
+Network Trash Folder
+Temporary Items
+.apdisk
+
+# ========================
+# Windows Files
+# ========================
+Thumbs.db
+ehthumbs.db
+ehthumbs_vista.db
+$RECYCLE.BIN/
+*.stackdump
+[Dd]esktop.ini
+*.cab
+*.msi
+*.msix
+*.msm
+*.msp
+*.lnk
+
+# ========================
+# Linux Files
+# ========================
+*~
+.fuse_hidden*
+.directory
+.Trash-*
+.nfs*
+
+# ========================
+# IDEs and Editors
+# ------------------------
+# VSCode
+.vscode/
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+
+# JetBrains IDEs (PhpStorm, IntelliJ, etc.)
+.idea/
+.idea/**/workspace.xml
+.idea/**/tasks.xml
+.idea/**/usage.statistics.xml
+.idea/**/dictionaries
+.idea/**/shelf
+.idea/**/contentModel.xml
+.idea/**/dataSources/
+.idea/**/dataSources.ids
+.idea/**/dataSources.local.xml
+.idea/**/sqlDataSources.xml
+.idea/**/dynamic.xml
+.idea/**/uiDesigner.xml
+.idea/**/dbnavigator.xml
+.idea/**/gradle.xml
+.idea/**/libraries
+.idea/httpRequests
+.idea_modules/
+out/
+
+# Sublime Text
+*.sublime-workspace
+*.sublime-project
+*.tmlanguage.cache
+*.tmPreferences.cache
+*.stTheme.cache
+sftp-config.json
+Package Control.*
+Package Control.cache/
+Package Control.ca-certs/
+Package Control.user-ca-bundle
+GitHub.sublime-settings
+bh_unicode_properties.cache
+
+# Notepad++
+*.bak
+
+# Emacs
+*~
+\#*\#
+/.emacs.desktop
+/.emacs.desktop.lock
+*.elc
+auto-save-list
+tramp
+.\#*
+.org-id-locations
+*_archive
+*_flymake.*
+/eshell/history
+/eshell/lastdir
+/elpa/
+/auto/
+.cask/
+dist/
+flycheck_*.el
+/server/
+.projectile
+.dir-locals.el
+/network-security.data
+
+# Vim
+[._]*.s[a-v][a-z]
+[._]*.sw[a-p]
+[._]s[a-rt-v][a-z]
+[._]ss[a-gi-z]
+[._]sw[a-p]
+Session.vim
+.netrwhist
+tags
+[._]*.un~
+
+# Eclipse
+.metadata
+bin/
+tmp/
+*.tmp
+*.bak
+*.swp
+*~.nib
+local.properties
+.settings/
+.loadpath
+.recommenders
+.externalToolBuilders/
+*.launch
+*.pydevproject
+.cproject
+.autotools
+.factorypath
+.buildpath
+.target
+.tern-project
+.texlipse
+.springBeans
+.apt_generated/
+.cache-main
+.scala_dependencies
+.worksheet
+
+# NetBeans
+**/nbproject/private/
+**/nbproject/Makefile-*.mk
+**/nbproject/Package-*.bash
+build/
+nbbuild/
+dist/
+nbdist/
+.nb-gradle/
+
+# Dreamweaver
+_notes
+_compareTemp
+configs/
+dwsync.xml
+dw_php_codehinting.config
+*.mno
+
+# CodeKit
+config.codekit
+config.codekit3
+/min
+
+# ========================
+# Version Control Systems
+# ========================
+.svn/
+.hg/
+.hgignore
+.hgsigs
+.hgsub
+.hgsubstate
+.hgtags
+.bzr/
+.bzrignore
+/CVS/*
+**/CVS/*
+.cvsignore
+*/.cvsignore
+
+# TortoiseGit
+/.tgitconfig
+
+# ========================
+# Tools & Misc
+# ========================
+/wpcs/*
+/nbproject/private/
+.cache-main
+/auto/
+.projectile
+/storage/access_token.sqlite
+
+##### Laravel
+/vendor/
+/node_modules/
+/public/storage
+/storage/*.key
+.env
+.phpunit.result.cache
+Homestead.yaml
+Homestead.json
+npm-debug.log
+yarn-error.log
+.env.backup
+.env.example.backup
+.env.testing
+
+##### Laravel IDE Helper
+_ide_helper.php
+.phpstorm.meta.php
+
+##### WordPress
+wp-config.php
+license.txt
+readme.html
+wp-content/cache/
+wp-content/backups/
+wp-content/upgrade/
+wp-content/uploads/*
+!wp-content/uploads/.gitkeep
+wp-content/advanced-cache.php
+wp-content/wp-cache-config.php
+wp-content/object-cache.php
+wp-content/plugins/hello.php
+*.log
+*.sql
+*.tar.gz
+*.zip
+*.tmp
+*.bak
+wp-content/plugins/*/node_modules/
+wp-content/themes/*/node_modules/

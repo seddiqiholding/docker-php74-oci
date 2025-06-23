@@ -1,0 +1,12 @@
+services:
+  app:
+    build: .
+    ports:
+      - "8081:80"
+    volumes:
+      - ./app:/var/www/html
+    environment:
+      ORACLE_HOME: /opt/oracle/instantclient
+      LD_LIBRARY_PATH: /opt/oracle/instantclient
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
