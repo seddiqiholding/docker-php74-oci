@@ -1,6 +1,9 @@
 services:
   app:
-    build: .
+    build:
+      context: .
+      dockerfile: Dockerfile
+    platform: linux/amd64
     ports:
       - "8081:80"
     volumes:
@@ -8,5 +11,6 @@ services:
     environment:
       ORACLE_HOME: /opt/oracle/instantclient
       LD_LIBRARY_PATH: /opt/oracle/instantclient
+      BASE_URL: "http://host.docker.internal:8081"
     extra_hosts:
       - "host.docker.internal:host-gateway"
