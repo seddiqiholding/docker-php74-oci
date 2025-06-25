@@ -53,7 +53,9 @@ RUN cd /opt/oracle \
 RUN echo "instantclient,/opt/oracle/instantclient" | pecl install oci8-2.2.0 \
  && docker-php-ext-enable oci8 \
  && docker-php-ext-configure pdo_oci --with-pdo-oci=instantclient,/opt/oracle/instantclient,19.27 \
- && docker-php-ext-install pdo_oci
+ && docker-php-ext-install pdo_oci \
+ && pecl install apcu \
+ && docker-php-ext-enable apcu
 
 # Configure Apache
 RUN a2enmod headers rewrite \
