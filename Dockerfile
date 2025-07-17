@@ -50,12 +50,18 @@ RUN cd /opt/oracle \
  && rm -f /opt/oracle/*.zip
 
 # Install oci8 and pdo_oci PHP extensions
-RUN echo "instantclient,/opt/oracle/instantclient" | pecl install oci8-2.2.0 \
- && docker-php-ext-enable oci8 \
- && docker-php-ext-configure pdo_oci --with-pdo-oci=instantclient,/opt/oracle/instantclient,19.27 \
- && docker-php-ext-install pdo_oci \
- && pecl install apcu \
+RUN echo "instantclient,/opt/oracle/instantclient" | pecl install oci8-2.2.0 -y \
+ && docker-php-ext-enable oci8
+
+RUN docker-php-ext-configure pdo_oci --with-pdo-oci=instantclient,/opt/oracle/instantclient,19.27 \
+ && docker-php-ext-install pdo_oci
+
+RUN pecl install apcu -y \
  && docker-php-ext-enable apcu
+
+# Install Xdebug (optionally specify version for PHP 7.4)
+RUN pecl install xdebug-3.1.6 -y \
+ && docker-php-ext-enable xdebug
 
 # Configure Apache
 RUN a2enmod headers rewrite \
@@ -65,6 +71,13 @@ RUN a2enmod headers rewrite \
     AllowOverride All\n\
     Require all granted\n\
 </Directory>' >> /etc/apache2/apache2.conf
+
+# Configure Xdebug
+RUN echo "zend_extension=$(find /usr/local/lib/php/extensions/ -name xdebug.so)" > /usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini \
+ && echo "xdebug.mode=develop,debug" >> /usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini \
+ && echo "xdebug.start_with_request=yes" >> /usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini \
+ && echo "xdebug.client_host=host.docker.internal" >> /usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini \
+ && echo "xdebug.log=/tmp/xdebug.log" >> /usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini
 
 # Copy project files
 COPY app/ /var/www/html/
@@ -79,7 +92,7 @@ HEALTHCHECK --interval=30s --timeout=3s --start-period=5s --retries=3 \
     CMD curl -f http://localhost/ || exit 1
 
 # Expose port
-EXPOSE 80
+EXPOSE 80 9003
 
 # Start Apache
-CMD ["apache2-foreground"]  
+CMD ["apache2-foreground"]
